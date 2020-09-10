@@ -270,8 +270,6 @@ source('./R/Figures/getPlotData/getPlotData_fpr_at_k.R')
 
 # cross-sectional two-sided 
 fpr_at_k.df <- getplotData_fpr_at_k(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/Enlarged_BFsim_D_0/BFsims.rds',
-                                    alternative = "two.sided", 
-                                    paired = F, 
                                     start_n_comparisons = 12, 
                                     max_n_comparisons = 50, 
                                     k_BF10 = c(3,4,6), 
@@ -283,8 +281,6 @@ rm(list = c("fpr_at_k.df")) #clean enviroment of fpr_at_k.df
 
 # paired two-sided 
 fpr_at_k.df <- getplotData_fpr_at_k(path.slim = './DerivedData/SlimmedData/Paired/TwoSided/Enlarged_BFsim_D_0/BFsims.rds',
-                                    alternative = "two.sided", 
-                                    paired = T, 
                                     start_n_comparisons = 12, 
                                     max_n_comparisons = 50, 
                                     k_BF10 = c(3,4,6), 
@@ -663,8 +659,6 @@ rm(list = c("slim_out")) #clean enviroment of slim_out
 
 # cross-sectional one-sided 
 fpr_at_k.df <- getplotData_fpr_at_k(path.slim = './DerivedData/SlimmedData/CrossSectional/OneSided/Supplementary/BFsim_Nmax_200.rds',
-                                    alternative = "positive", 
-                                    paired = F, 
                                     start_n_comparisons = 12, 
                                     max_n_comparisons = 200, 
                                     k_BF10 = c(3,4,6), 
@@ -675,8 +669,6 @@ write.csv(x = fpr_at_k.df,file = './DerivedData/PlotData/fpr_at_different_k/Supp
 
 # paired one-sided 
 fpr_at_k.df <- getplotData_fpr_at_k(path.slim = './DerivedData/SlimmedData/Paired/OneSided/Supplementary/BFsim_Nmax_200.rds',
-                                    alternative = "positive", 
-                                    paired = T, 
                                     start_n_comparisons = 12, 
                                     max_n_comparisons = 200, 
                                     k_BF10 = c(3,4,6), 
