@@ -3,8 +3,7 @@
 #######################################################
 ### Jonas Svensson (KI), July 2020
 
-getplotData_fpr_at_k <- function(path.slim, alternative, paired, start_n_comparisons, 
-                                 max_n_comparisons, k_BF10, k_BF01, decimals) {
+getplotData_fpr_at_k <- function(path.slim, start_n_comparisons, max_n_comparisons, k_BF10, k_BF01, decimals) {
   
   library(tidyverse)
 
