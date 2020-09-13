@@ -363,7 +363,7 @@ Before applying the sequential BF testing method, the researchers should decide 
 
 It should by now be clear to the reader that a set of critical decisions needs to be made before applying sequential BF testing in a clinical PET study. For this reason, we recommend all researchers to pre-register their analysis before data collection starts [^fn9] [@VantVeer2016; @Poldrack2017; @Knudsen2020]. A pre-registration can be thought of as a safety net for the researcher. It helps guide the analysis and interpretation of data so that error rates are kept under control. It can also be shown to reviewers or readers to increase the credibility of the methods and findings. Deviations from a pre-registration is of course possible, and often warranted, but should be reported transparently in the article.  
 
-If the PET researcher wants to perform a study using sequential BF testning we recommend that they follow the steps outlined in a flow-chart found in supplementary information (supplementary Figure S12). In order to perform the default BF t-test, the freely available *BayesFactor* package [@Morey2018] in R or point-and-click software JASP [@Quintana2018; @Love2019; @VanDoorn2019] can be used. 
+If a PET researcher wants to perform a study using sequential BF testning, we recommend that they follow the steps outlined in a flow-chart found in supplementary information (supplementary Figure S12). In order to perform the default BF t-test, the freely available *BayesFactor* package [@Morey2018] in R or point-and-click software JASP [@Quintana2018; @Love2019; @VanDoorn2019] can be used. 
 
 #### Caveats
 
