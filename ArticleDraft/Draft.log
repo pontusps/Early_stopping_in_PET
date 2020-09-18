@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.7.23)  13 SEP 2020 10:18
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.7.23)  13 SEP 2020 20:28
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1774,11 +1774,11 @@ Package rerunfilecheck Info: File `Draft.out' has not changed.
 Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1258.
  ) 
 Here is how much of TeX's memory you used:
- 37276 strings out of 493013
- 709949 string characters out of 6133343
- 813459 words of memory out of 5000000
- 39971 multiletter control sequences out of 15000+600000
- 83012 words of font info for 150 fonts, out of 8000000 for 9000
+ 37295 strings out of 493013
+ 710233 string characters out of 6133343
+ 813462 words of memory out of 5000000
+ 39981 multiletter control sequences out of 15000+600000
+ 104542 words of font info for 158 fonts, out of 8000000 for 9000
  1141 hyphenation exceptions out of 8191
  63i,21n,101p,10499b,433s stack positions out of 5000i,500n,10000p,200000b,80000s
 pdfTeX warning (dest): name{Hfootnote.9} has been referenced but does not exi
@@ -1808,9 +1808,9 @@ pdfTeX warning (dest): name{Hfootnote.2} has been referenced but does not exist
 pdfTeX warning (dest): name{Hfootnote.1} has been referenced but does not exist
 , replaced by a fixed one
 
-{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/te
-xlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2016
-/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/texlive/2016/texmf-dist/fo
+{/usr/local/texlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-rm.enc}{/usr/local/te
+xlive/2016/texmf-dist/fonts/enc/dvips/lm/lm-ec.enc}{/usr/local/texlive/2016/tex
+mf-dist/fonts/enc/dvips/lm/lm-mathsy.enc}{/usr/local/texlive/2016/texmf-dist/fo
 nts/enc/dvips/lm/lm-mathit.enc}</usr/local/texlive/2016/texmf-dist/fonts/type1/
 public/lm/lmbx10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/
 lmbx12.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmbx8.pfb>
@@ -1827,10 +1827,10 @@ t/fonts/type1/public/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/fonts/ty
 pe1/public/lm/lmri7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
 lm/lmri8.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy10.p
 fb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on Draft.pdf (26 pages, 3765835 bytes).
+Output written on Draft.pdf (26 pages, 3765756 bytes).
 PDF statistics:
- 450 PDF objects out of 1000 (max. 8388607)
- 364 compressed objects within 4 object streams
+ 454 PDF objects out of 1000 (max. 8388607)
+ 368 compressed objects within 4 object streams
  120 named destinations out of 1000 (max. 500000)
- 16699 words of extra memory for PDF output out of 17280 (max. 10000000)
+ 20795 words of extra memory for PDF output out of 24883 (max. 10000000)
 
