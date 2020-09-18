@@ -14,6 +14,8 @@ The project is structured as follows:
 3. Read in slimmed data, create data to plot and save as *.csv*
 4. Read in plot-data, create figures and save as *.png*
 
+With the ./R/Figures/reproduce_figures.R the user should be able to reproduce the figures in the article and supplementary following the steps above. 
+
 __NB1:__ Data from step 1 above is not saved on github, since the files are to large. Hence the folder "./DerivedData/SimulationData" is empty.   
 
 __NB2:__ Raw data from Figure 6 have been jittered before public sharing. It will hence not exactly produce Figure 6 in the article.    
