@@ -255,16 +255,23 @@ earlystopBF <- function(alternative="two_sided", paired = FALSE, rscale = "0.707
   SD_ymin <- rep(mean_stopped_at-SD_N,2)
   SD_ymin[SD_ymin<BF_start_at_n_comparisons] <- BF_start_at_n_comparisons
   
+  
+  if (mean_stopped_at[length(mean_stopped_at)]/max_n_comparisons<0.5){
+    p2_leg_pos_y <- 0.85
+  }else{
+    p2_leg_pos_y <- 0.15
+  }
+  
   p2<-ggplot2::ggplot(data = remove_missing(df_to_plot2, na.rm = TRUE),aes(x = D, y = N, group = outcome, color = outcome))+
     geom_line(size =2)+
     labs(title = "" ,x=text_stuff$x_lable, y= "Average N per group") +
     theme_bw(base_size=25) +
     geom_ribbon(aes(ymax = SD_ymax, ymin = SD_ymin), 
                 fill = "grey",alpha = .2, show.legend = FALSE) +
-    theme(legend.title = element_blank(), legend.position = c(0.8, 0.15)) +
+    theme(legend.title = element_blank(), legend.position = c(0.8, p2_leg_pos_y)) +
     scale_color_manual(values=c("#059af4", "black"))+
     scale_x_continuous(breaks = seq(0, D_vector[length(D_vector)], length.out = 11), labels = seq(0, text_stuff$x_tick[length(text_stuff$x_tick)], length.out = 11)) +
-    scale_y_continuous(breaks = seq(0, max_n_comparisons, length.out = 11), labels = seq(0, max_n_comparisons, length.out = 11))+
+    scale_y_continuous(breaks = round(seq(0, max_n_comparisons, length.out = 11)), labels = round(seq(0, max_n_comparisons, length.out = 11)))+
     coord_cartesian(ylim = c(0, max_n_comparisons))
   
   #Bind plots together

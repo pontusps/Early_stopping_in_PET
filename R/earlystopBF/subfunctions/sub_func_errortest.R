@@ -16,6 +16,11 @@ sub_func_errortest <- function(BF_start_at_n_comparisons, max_n_comparisons, tes
     warning(paste0("Only one decimale is allowed, BF01 is rounded to: ", rounded_BF01))
   }
   
+  #Check that input that must be integers really are integers
+  if (!BF_start_at_n_comparisons%%1==0 | !max_n_comparisons%%1==0 | !test_seq%%1==0) {
+    stop("Inputs 'BF_start_at_n_comparisons', 'max_n_comparisons' and 'test_seq' must all be integers (i.e. no decimales)")
+  }
+  
   #Test for BF10 k that is not possible due to compression of simulation
   if (rounded_BF10>100) {
     stop("BF10 stopping criteria is not allowed to be set higher than 100")
