@@ -96,7 +96,13 @@ simFun <- function(i,n_comparisons,sim,paired,alternative,rscale){
 ###Wrapper fun to execute simFun above and save and write results 
 BF_seq_sim_parallel <- function(n_trials = 100, n_comparisons = 100, mean_diff = 0, standard_dev = 1, rscale = sqrt(2)/2, alternative = 'two.sided', paired = F, ratio_null_true = 0, use_seeds = F, cpus = 1){
   
+  source('./R/Simulations/sub_fun_error_check_sim.R')
   source('./R/Simulations/simulate_data.R')
+  
+  #Check for errors in arguments to be passed to simulation fun "simFun" 
+  sub_fun_error_check_sim(mean_diff = mean_diff, standard_dev = standard_dev, 
+                          rscale = rscale, alternative = alternative, 
+                          paired = paired, ratio_null_true = ratio_null_true)
   
   #Start time 
   t0 <- Sys.time()
