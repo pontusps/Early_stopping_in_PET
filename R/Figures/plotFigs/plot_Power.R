@@ -4,7 +4,7 @@
 ### Pontus Plavén-Sigray (NRU) & Jonas Svensson, KI, August 2020
 
 ### Arguments
-# path, path to csv contianing plot data
+# path, path to csv containing plot data
 # start_n_comparisons, at what N/group seq BF testing started
 # max_n_comparisons, Nmax
 # D_vector, vector of simulated effect sizes 
@@ -93,7 +93,7 @@ plot_Power <- function(path,
     NHST <- data.frame(N = max_n_comparisons, 
                        SD_ymax= df_to_plot$SD_ymax, 
                        SD_ymin = df_to_plot$SD_ymin, 
-                       outcome = 'fixed N NHST ', 
+                       outcome = 'fixed N approach', 
                        D = df_to_plot$D)
     
     df_to_plot <- rbind(df_to_plot,NHST)

@@ -163,7 +163,7 @@ getPlotData_power_curves <- function(path.slim, alternative, paired, D_vector, s
                        N = max_n_comparisons, 
                        SD_ymax = mean_stopped_at + SD_N,
                        SD_ymin = mean_stopped_at - SD_N )
-    NHST$outcome <- "fixed N NHST"
+    NHST$outcome <- "fixed N approach"
     NHST$D <- D_vector
 
     
