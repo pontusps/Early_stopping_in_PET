@@ -340,7 +340,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Cross
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 30,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = 4.05,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -358,7 +358,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paire
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 30,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = 4.25,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -743,72 +743,36 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S1
                    base_height = 40,
                    units = 'cm')
 
+
 #################
 ### SFigure 2 ###
 #################
-#Power curve BF and NHST, Nmax = 15
+#0-centered Cauchy seq-BF and seq-NHST being identical when setting fpr to 5% and stopping only for H0.  
 
-### Get plot data
-
-# cross-sectional two-sided, Nstart = 12, Nmax = 15
-pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/BFsims.rds',
-                                    alternative = 'two.sided',
-                                    paired = F,
-                                    D_vector = D_vector,
-                                    start_n_comparisons = 8,
-                                    max_n_comparisons = 15,
-                                    test_seq = 1,
-                                    k_BF10 = 4,
-                                    k_BF01 = Inf,
-                                    decimals = 1,
-                                    NHST_curve = T,
-                                    sig.level = 0.05)
-
-write.csv(x = pwr.df,file = './DerivedData/PlotData/power_stopH1/Supplementary/CS_two_sided_stopH1_Nmax15.csv',row.names = F)
-rm(list = c("pwr.df")) #clean enviroment of pwr.df
-
-# paired two-sided, Nstart = 12, Nmax = 15
-pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paired/TwoSided/BFsims.rds',
-                                    alternative = 'two.sided',
-                                    paired = T,
-                                    D_vector = D_vector,
-                                    start_n_comparisons = 8,
-                                    max_n_comparisons = 15,
-                                    test_seq = 1,
-                                    k_BF10 = 4,
-                                    k_BF01 = Inf,
-                                    decimals = 1,
-                                    NHST_curve = T,
-                                    sig.level = 0.05)
-
-write.csv(x = pwr.df,file = './DerivedData/PlotData/power_stopH1/Supplementary/Paired_two_sided_stopH1_Nmax15.csv',row.names = F)
-rm(list = c("pwr.df")) #clean enviroment of pwr.df
-
-### Plot figure
-
+source('./R/Figures/plotFigs/plot_Power_seqNHST.R')
 
 #Cross-sectional
-BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Supplementary/CS_two_sided_stopH1_Nmax15.csv', 
+BF_NHST_power_N_CS <- plot_Power_seqNHST(path = './DerivedData/PlotData/power_stopH1/Supplementary/CS_two_sided_stopH1_seqNHST.csv', 
                                  paired = F,
-                                 start_n_comparisons = 8,
-                                 max_n_comparisons = 15,
+                                 start_n_comparisons = 12,
+                                 max_n_comparisons = 30,
                                  D_vector = D_vector,
                                  print_FPR = F, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
-                                 legpos1 = c(0.69, 0.15),
+                                 legpos1 = c(0.69, 0.35),
                                  legpos2 = c(0.69, 0.15))
 
 #paired
-BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Supplementary/Paired_two_sided_stopH1_Nmax15.csv', 
+BF_NHST_power_N_paired <- plot_Power_seqNHST(path = './DerivedData/PlotData/power_stopH1/Supplementary/Paired_two_sided_stopH1_seqNHST.csv', 
                                      paired = T,
-                                     start_n_comparisons = 8,
-                                     max_n_comparisons = 15,
+                                     start_n_comparisons = 12,
+                                     max_n_comparisons = 30,
                                      D_vector = D_vector,
                                      print_FPR = F, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
-                                     legpos1 = c(0.69, 0.15),
+                                     legpos1 = c(0.69, 0.35),
                                      legpos2 = c(0.69, 0.15))
 
 BF_NHST_power <- plot_grid(BF_NHST_power_N_CS$power_panel, BF_NHST_power_N_paired$power_panel,
@@ -822,8 +786,89 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S2
                    base_height = 40,
                    units = 'cm')
 
+
+
+
 #################
 ### SFigure 3 ###
+#################
+#Power curve BF and NHST, Nmax = 15
+
+### Get plot data
+
+# cross-sectional two-sided, Nstart = 12, Nmax = 15
+pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/BFsims.rds',
+                                    alternative = 'two.sided',
+                                    paired = F,
+                                    D_vector = D_vector,
+                                    start_n_comparisons = 12,
+                                    max_n_comparisons = 15,
+                                    test_seq = 1,
+                                    k_BF10 = 4,
+                                    k_BF01 = Inf,
+                                    decimals = 1,
+                                    NHST_curve = T,
+                                    sig.level = 0.05)
+
+write.csv(x = pwr.df,file = './DerivedData/PlotData/power_stopH1/Supplementary/CS_two_sided_stopH1_Nmax15.csv',row.names = F)
+rm(list = c("pwr.df")) #clean enviroment of pwr.df
+
+# paired two-sided, Nstart = 8, Nmax = 15
+pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paired/TwoSided/BFsims.rds',
+                                    alternative = 'two.sided',
+                                    paired = T,
+                                    D_vector = D_vector,
+                                    start_n_comparisons = 12,
+                                    max_n_comparisons = 15,
+                                    test_seq = 1,
+                                    k_BF10 = 4,
+                                    k_BF01 = Inf,
+                                    decimals = 1,
+                                    NHST_curve = T,
+                                    sig.level = 0.05)
+
+write.csv(x = pwr.df,file = './DerivedData/PlotData/power_stopH1/Supplementary/Paired_two_sided_stopH1_Nmax15.csv',row.names = F)
+rm(list = c("pwr.df")) #clean enviroment of pwr.df
+
+### Plot figure
+
+#Cross-sectional
+BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Supplementary/CS_two_sided_stopH1_Nmax15.csv', 
+                                 paired = F,
+                                 start_n_comparisons = 12,
+                                 max_n_comparisons = 15,
+                                 D_vector = D_vector,
+                                 print_FPR = F, 
+                                 title = 'Cross-sectional',
+                                 ylab='Positive findings (%)', 
+                                 legpos1 = c(0.69, 0.15),
+                                 legpos2 = c(0.69, 0.15))
+
+#paired
+BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Supplementary/Paired_two_sided_stopH1_Nmax15.csv', 
+                                     paired = T,
+                                     start_n_comparisons = 12,
+                                     max_n_comparisons = 15,
+                                     D_vector = D_vector,
+                                     print_FPR = F, 
+                                     title = 'Paired',
+                                     ylab='Positive findings (%)', 
+                                     legpos1 = c(0.69, 0.15),
+                                     legpos2 = c(0.69, 0.15))
+
+BF_NHST_power <- plot_grid(BF_NHST_power_N_CS$power_panel, BF_NHST_power_N_paired$power_panel,
+                           BF_NHST_power_N_CS$N_panel,BF_NHST_power_N_paired$N_panel,
+                           labels = c('A', 'B', 'C','D'), 
+                           label_size = 25,ncol = 2)
+
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S3.png",
+                   plot = BF_NHST_power,
+                   base_width = 40,
+                   base_height = 40,
+                   units = 'cm')
+
+#################
+### SFigure 4 ###
 #################
 #Power curve BF and NHST, Nmax = 20
 
@@ -895,14 +940,14 @@ BF_NHST_power <- plot_grid(BF_NHST_power_N_CS$power_panel, BF_NHST_power_N_paire
                            labels = c('A', 'B', 'C','D'), 
                            label_size = 25,ncol = 2)
 
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S3.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S4.png",
                    plot = BF_NHST_power,
                    base_width = 40,
                    base_height = 40,
                    units = 'cm')
 
 #################
-### SFigure 4 ###
+### SFigure 5 ###
 #################
 #Power curve BF and NHST, Nmax = 50
 
@@ -974,14 +1019,14 @@ BF_NHST_power <- plot_grid(BF_NHST_power_N_CS$power_panel, BF_NHST_power_N_paire
                            labels = c('A', 'B', 'C','D'), 
                            label_size = 25,ncol = 2)
 
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S4.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S5.png",
                    plot = BF_NHST_power,
                    base_width = 40,
                    base_height = 40,
                    units = 'cm')
 
 #################
-### SFigure 5 ###
+### SFigure 6 ###
 #################
 #Power curve BF and NHST, Nmax = 100
 
@@ -1052,7 +1097,7 @@ BF_NHST_power <- plot_grid(BF_NHST_power_N_CS$power_panel, BF_NHST_power_N_paire
                            labels = c('A', 'B', 'C','D'), 
                            label_size = 25,ncol = 2)
 
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S5.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S6.png",
                    plot = BF_NHST_power,
                    base_width = 40,
                    base_height = 40,
@@ -1061,7 +1106,7 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S5
 
 
 #################
-### SFigure 6 ###
+### SFigure 7 ###
 #################
 #Power curve BF stop for H1 and H0, Nmax = 15
 
@@ -1133,14 +1178,14 @@ BF_stopH0_power <- plot_grid(BF_stopH0_power_N_CS$power_panel, BF_stopH0_power_N
                            labels = c('A', 'B', 'C','D'), 
                            label_size = 25,ncol = 2)
 
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S6.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S7.png",
                    plot = BF_stopH0_power,
                    base_width = 40,
                    base_height = 40,
                    units = 'cm')
 
 #################
-### SFigure 7 ###
+### SFigure 8 ###
 #################
 #Power curve BF stop for H1 and H0, Nmax = 20
 
@@ -1212,14 +1257,14 @@ BF_stopH0_power <- plot_grid(BF_stopH0_power_N_CS$power_panel, BF_stopH0_power_N
                            labels = c('A', 'B', 'C','D'), 
                            label_size = 25,ncol = 2)
 
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S7.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S8.png",
                    plot = BF_stopH0_power,
                    base_width = 40,
                    base_height = 40,
                    units = 'cm')
 
 #################
-### SFigure 8 ###
+### SFigure 9 ###
 #################
 #Power curve BF stop for H1 and H0, Nmax = 50
 
@@ -1291,14 +1336,14 @@ BF_stopH0_power <- plot_grid(BF_stopH0_power_N_CS$power_panel, BF_stopH0_power_N
                            labels = c('A', 'B', 'C','D'), 
                            label_size = 25,ncol = 2)
 
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S8.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S9.png",
                    plot = BF_stopH0_power,
                    base_width = 40,
                    base_height = 40,
                    units = 'cm')
 
 #################
-### SFigure 9 ###
+### SFigure 10 ###
 #################
 #Power curve BF stop for H1 and H0, Nmax = 100
 
@@ -1369,14 +1414,14 @@ BF_stopH0_power <- plot_grid(BF_stopH0_power_N_CS$power_panel, BF_stopH0_power_N
                            labels = c('A', 'B', 'C','D'), 
                            label_size = 25,ncol = 2)
 
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S9.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S10.png",
                    plot = BF_stopH0_power,
                    base_width = 40,
                    base_height = 40,
                    units = 'cm')
 
 #################
-### SFigure 10 ###
+### SFigure 11 ###
 #################
 #Power curve BF stop for H1 and H0, Cauchy(1), Paired, Nmax = 30
 
@@ -1452,7 +1497,7 @@ BF_stopH0_paired_rscale1 <- plot_grid(BF_stopH0_paired_rscale1$power_panel,
                            label_size = 25,ncol = 1)
 
 #And save the plot
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S10.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S11.png",
                    plot = BF_stopH0_paired_rscale1,
                    base_width = 20,
                    base_height = 40,
@@ -1460,7 +1505,7 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S1
 
 
 ##################
-### SFigure 11 ###
+### SFigure 12 ###
 ##################
 # Maximum possible BF in favor of H0 for different N when using a Cauchy(0.707). 
 
@@ -1492,7 +1537,7 @@ max_BF01_at_N <- plot_grid(max_BF01_at_N.CS$max_possible_BF01, max_BF01_at_N.pai
                            labels = c('A', 'B', 'C','D'), 
                            label_size = 10,ncol = 2)
 
-cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S11.png",
+cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S12.png",
                    plot = max_BF01_at_N,
                    base_width = 15,
                    base_height = 15,
