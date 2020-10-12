@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.7.23)  12 OCT 2020 09:55
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.7.23)  12 OCT 2020 10:13
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1709,21 +1709,21 @@ File: /Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure4
 <use /Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure4.
 png>
 Package pdftex.def Info: /Users/pontus.sigray/Github/Early_stopping_in_PET/Resu
-lts/Figures/Figure4.png used on input line 576.
+lts/Figures/Figure4.png used on input line 575.
 (pdftex.def)             Requested size: 398.30135pt x 398.30135pt.
 [10] [11pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.3}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.594 
+l.593 
        </Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figur
 e3.png>] [12pdfTeX warning (ext4): destination with the same identifier (name{f
 igure.4}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.594 
+l.593 
        </Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figur
 e4.png>] [13]
 </Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure5.png,
@@ -1734,14 +1734,14 @@ File: /Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure5
 <use /Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure5.
 png>
 Package pdftex.def Info: /Users/pontus.sigray/Github/Early_stopping_in_PET/Resu
-lts/Figures/Figure5.png used on input line 660.
+lts/Figures/Figure5.png used on input line 659.
 (pdftex.def)             Requested size: 398.30135pt x 398.30135pt.
 [14] [15pdfTeX warning (ext4): destination with the same identifier (name{figur
 e.5}) has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.701 
+l.700 
        </Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figur
 e5.png>] [16] [17]
 </Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure6.png,
@@ -1830,7 +1830,7 @@ e1/public/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
 lm/lmri7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmri8.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/lo
 cal/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on Draft.pdf (28 pages, 3796028 bytes).
+Output written on Draft.pdf (28 pages, 3796067 bytes).
 PDF statistics:
  477 PDF objects out of 1000 (max. 8388607)
  388 compressed objects within 4 object streams
