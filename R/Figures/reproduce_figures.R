@@ -757,7 +757,7 @@ BF_NHST_power_N_CS <- plot_Power_seqNHST(path = './DerivedData/PlotData/power_st
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 30,
                                  D_vector = D_vector,
-                                 print_FPR = F, 
+                                 print_FPR = T, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.35),
@@ -769,7 +769,7 @@ BF_NHST_power_N_paired <- plot_Power_seqNHST(path = './DerivedData/PlotData/powe
                                      start_n_comparisons = 12,
                                      max_n_comparisons = 30,
                                      D_vector = D_vector,
-                                     print_FPR = F, 
+                                     print_FPR = T, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
                                      legpos1 = c(0.69, 0.35),
@@ -786,16 +786,12 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S2
                    base_height = 40,
                    units = 'cm')
 
-
-
-
 #################
 ### SFigure 3 ###
 #################
 #Power curve BF and NHST, Nmax = 15
 
 ### Get plot data
-
 # cross-sectional two-sided, Nstart = 12, Nmax = 15
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
@@ -838,7 +834,7 @@ BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Sup
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 15,
                                  D_vector = D_vector,
-                                 print_FPR = F, 
+                                 print_FPR = T, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.15),
@@ -850,7 +846,7 @@ BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1
                                      start_n_comparisons = 12,
                                      max_n_comparisons = 15,
                                      D_vector = D_vector,
-                                     print_FPR = F, 
+                                     print_FPR = T, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
                                      legpos1 = c(0.69, 0.15),
@@ -917,7 +913,7 @@ BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Sup
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 20,
                                  D_vector = D_vector,
-                                 print_FPR = F, 
+                                 print_FPR = T, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.15),
@@ -929,7 +925,7 @@ BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1
                                      start_n_comparisons = 12,
                                      max_n_comparisons = 20,
                                      D_vector = D_vector,
-                                     print_FPR = F, 
+                                     print_FPR = T, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
                                      legpos1 = c(0.69, 0.15),
@@ -996,7 +992,7 @@ BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Sup
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 50,
                                  D_vector = D_vector,
-                                 print_FPR = F, 
+                                 print_FPR = T, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.4),
@@ -1008,7 +1004,7 @@ BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1
                                      start_n_comparisons = 12,
                                      max_n_comparisons = 50,
                                      D_vector = D_vector,
-                                     print_FPR = F, 
+                                     print_FPR = T, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
                                      legpos1 = c(0.69, 0.4),
@@ -1074,7 +1070,7 @@ BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Sup
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 100,
                                  D_vector = D_vector,
-                                 print_FPR = F, 
+                                 print_FPR = T, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.4),
