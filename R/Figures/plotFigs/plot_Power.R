@@ -8,7 +8,7 @@
 # start_n_comparisons, at what N/group seq BF testing started
 # max_n_comparisons, Nmax
 # D_vector, vector of simulated effect sizes 
-# print_FPR, print a text-box in figure reporting the FPR in numbers
+# print_FPR, default NULL, otherwise the y-coordinate for drawing a text-box in figure reporting the FPR in %
 # title, panel title
 # ylab, y-axis label
 
@@ -17,7 +17,7 @@ plot_Power <- function(path,
                        start_n_comparisons = start_n_comparisons,
                        max_n_comparisons = max_n_comparisons,
                        D_vector = D_vector,
-                       print_FPR = F, 
+                       print_FPR = NULL, 
                        title = '',
                        ylab = '', 
                        legpos1 = c(0.69, 0.4),
@@ -49,7 +49,8 @@ plot_Power <- function(path,
                      y_lable = y_lable)
   
   #Check for how many lines to draw and specify colors for them
-  if(length(levels(df_to_plot$outcome))==2){
+  
+  if(length(unique(df_to_plot$outcome))==2){
     color_input <- c( "#059af4", "black" )
   }else{
     color_input <-  c( "red","black","#059af4")
@@ -72,9 +73,9 @@ plot_Power <- function(path,
     theme(legend.title = element_blank(),legend.position = legpos1)+
     coord_cartesian(ylim=c(0,100))
   
-  if (print_FPR == 1) {
+  if (!is.null(print_FPR)) {
   p1 <- p1 + 
-    geom_label(aes(label = paste0("FPR: ", round(Decision[1],2),"%")), x = 0.2, y = 0, size = 8, color = "black", label.size = 1) 
+    geom_label(aes(label = paste0("FPR: ", round(Decision[1],1),"%")), x = 0.2, y = print_FPR, size = 8, color = "black", label.size = 1) 
   }
   
   #########################
@@ -85,7 +86,7 @@ plot_Power <- function(path,
   df_to_plot <- df_to_plot %>%
     select(c(N, SD_ymax, SD_ymin, outcome, D ))
   
-  if(length(levels(df_to_plot$outcome)) == 3){
+  if(length(unique(df_to_plot$outcome)) == 3){
     df_to_plot <- df_to_plot %>%
       filter(outcome == 'Stop for H1 OR H0') %>%
       mutate(outcome = 'BF seq testing')
