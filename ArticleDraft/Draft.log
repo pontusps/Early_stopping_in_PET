@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.7.23)  12 OCT 2020 10:13
+This is pdfTeX, Version 3.14159265-2.6-1.40.17 (TeX Live 2016) (preloaded format=pdflatex 2017.7.23)  13 OCT 2020 15:04
 entering extended mode
  restricted \write18 enabled.
  %&-line parsing enabled.
@@ -1658,10 +1658,9 @@ has been already used, duplicate ignored
 
 \AtBegShi@Output ...ipout \box \AtBeginShipoutBox 
                                                   \fi \fi 
-l.338 w
-       here \(\delta\) denotes the true population effect, and ``\(\sim\)'' </U
-sers/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure1.png>] [
-6]
+l.334 \newpage
+               </Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figur
+es/Figure1.png>] [6]
 </Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure2.png,
  id=175, 5927.14375pt x 3556.28625pt>
 File: /Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure2
@@ -1830,7 +1829,7 @@ e1/public/lm/lmri10.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/
 lm/lmri7.pfb></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmri8.pf
 b></usr/local/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy10.pfb></usr/lo
 cal/texlive/2016/texmf-dist/fonts/type1/public/lm/lmsy7.pfb>
-Output written on Draft.pdf (28 pages, 3796067 bytes).
+Output written on Draft.pdf (28 pages, 3796031 bytes).
 PDF statistics:
  477 PDF objects out of 1000 (max. 8388607)
  388 compressed objects within 4 object streams

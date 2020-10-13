@@ -127,8 +127,9 @@ In the classical NHST framework, the alternative hypothesis is often specified a
 
 A commonly used non-informative distribution for describing H~1~ when testing mean differences is a two sided Cauchy distribution centered around zero[^fn5] (Figure \ref{fig_Cauchy}) [@Gonen2005]. This distribution ranges from minus infinity to plus infinity, and has fat tails relative to other continuous distributions. Using a Cauchy distribution means that the researcher specifies H~1~ to reflect the belief that the effect (such as a patient-control difference) is of small or medium size with relatively high confidence, but also allowing, with less confidence, an effect of a larger size. The fatness of the tails is determined by the width parameter *r* (analogous to the SD of a normal distribution), and is by convention often set to 0.707. Formally, the two competing hypotheses in such a BF test are: 
 
-$H_0: \delta = 0$
+\newpage
 
+$H_0: \delta = 0$
 $H_1: \delta \sim Cauchy(0,0.707)$
 
 where $\delta$ denotes the true population effect, and “$\sim$” means “distributed according to”. This particular null and alternative-hypothesis pair has become so common today when testing mean differences that it is called the “default” BF t-test [@Rouder2009; @Ly2016, @McMahon2016]. In this article, we will only evaluate sequential testing in PET studies using the default BF t-test.
@@ -238,7 +239,7 @@ Simulation results for different choices of Nmax (15, 20, 50 and 100 subjects/gr
 \vspace{10pt}
 
 \begin{tcolorbox}[title=\textbf{Practical recommendations 1},title filled]
-{In this simulation set-up we show that it is possible to stop a PET study early if there is a true underlying effect in the population, while keeping the number of false positive findings below 5\%. For a patient-control comparison, we recommend that sequential BF testing not be started until at least 12 subjects per group have been collected, adjusting the BF threshold upwards for larger values of Nmax. Importantly, these settings should only be used when the PET researcher is interested in stopping early when data shows support for H\textsubscript{1}. All BF values showing support in favour of H\textsubscript{1} (BF < 1) should not, with these settings, be interpreted as anything else but inconclusive findings.}
+{In this simulation set-up we show that it is possible to stop a PET study early if there is a true underlying effect in the population, while keeping the number of false positive findings below 5\%. For a patient-control comparison, we recommend that sequential BF testing not be started until at least 12 subjects per group have been collected, adjusting the BF threshold upwards for larger values of Nmax. Importantly, these settings should only be used when the PET researcher is interested in stopping early when data shows support for H\textsubscript{1}. All BF values showing support in favour of H\textsubscript{0} (BF < 1) should not, with these settings, be interpreted as anything else but inconclusive findings.}
 \end{tcolorbox}
 
 ##Objective 2 - stopping for both H~1~ and H~0~
