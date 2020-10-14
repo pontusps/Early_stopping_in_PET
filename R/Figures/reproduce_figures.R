@@ -22,7 +22,6 @@ source('./R/Simulations/BF_seq_sim_parallel.R')
 ####################################
 ### Simulate D = 0, 100.000 trials #
 ####################################
-
 #Creates cross-sectional two-sided sim-file in "./DerivedData/SimulationData"
 BF_sim_out <- BF_seq_sim_parallel(paired = F,
                                   n_trials = 100000,
@@ -33,6 +32,7 @@ BF_sim_out <- BF_seq_sim_parallel(paired = F,
                                   mean_diff = 0,
                                   standard_dev = 1,
                                   cpus = 4)
+
 
 saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/CrossSectional/TwoSided/Enlarged_BFsim_D_0/','BFsim_D_0.rds'))
 rm(list = c("BF_sim_out")) #clean enviroment of BF_sim_out
@@ -96,9 +96,9 @@ BF_sim_out <- BF_seq_sim_parallel(paired = F,
                                   ratio_null_true = 0,
                                   mean_diff = d,
                                   standard_dev = 1,
-                                  cpus = 4)
+                                  cpus = 10)
 
-saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/CrossSectional/TwoSided/','BFsim_D_',D_vector[d],'.rds'))
+saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/CrossSectional/TwoSided/','BFsim_D_',d,'.rds'))
 rm(list = c("BF_sim_out")) #clean enviroment of BF_sim_out
 
 }
@@ -115,7 +115,7 @@ for(d in D_vector){
                                     standard_dev = 1,
                                     cpus = 4)
   
-  saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/CrossSectional/OneSided/','BFsim_D_',D_vector[d],'.rds'))
+  saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/CrossSectional/OneSided/','BFsim_D_',d,'.rds'))
   rm(list = c("BF_sim_out")) #clean enviroment of BF_sim_out
 }
 
@@ -131,7 +131,7 @@ for(d in D_vector){
                                     standard_dev = 1,
                                     cpus = 4)
   
-  saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/Paired/TwoSided/','BFsim_D_',D_vector[d],'.rds'))
+  saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/Paired/TwoSided/','BFsim_D_',d,'.rds'))
   rm(list = c("BF_sim_out")) #clean enviroment of BF_sim_out
 }
 
@@ -147,7 +147,7 @@ for(d in D_vector){
                                     standard_dev = 1,
                                     cpus = 4)
   
-  saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/Paired/OneSided/','BFsim_D_',D_vector[d],'.rds'))
+  saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/Paired/OneSided/','BFsim_D_',d,'.rds'))
   rm(list = c("BF_sim_out")) #clean enviroment of BF_sim_out
 }
 
@@ -1433,7 +1433,7 @@ for(d in D_vector){
                                     standard_dev = 1,
                                     cpus = 4)
   
-  saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/Paired/OneSided/Supplementary/Cauchy_1/','BFsim_D_',D_vector[d],'.rds'))
+  saveRDS(object = BF_sim_out,file = paste0('./DerivedData/SimulationData/Paired/OneSided/Supplementary/Cauchy_1/','BFsim_D_',d,'.rds'))
   rm(list = c("BF_sim_out")) #clean enviroment of BF_sim_out
 }
 

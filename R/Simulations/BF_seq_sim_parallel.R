@@ -36,13 +36,13 @@ simFun <- function(i,n_comparisons,sim,paired,alternative,rscale){
       #Calculate BF in favor of H1
       if (alternative == 'two.sided'){
         BF_10 <- BayesFactor::ttestBF(x = sim[[i]]$data$deltaPairs[1:s], rscale = rscale,mu = 0) #a one-sample t-test on the paired difference against 0, equivalent to a paired sample t-test
-        #p_val <- t.test(x = sim[[i]]$data$deltaPairs[1:s])$p.value
+        p_val <- t.test(x = sim[[i]]$data$deltaPairs[1:s])$p.value
       }else if(alternative == 'negative'){
         BF_10 <- BayesFactor::ttestBF(x = sim[[i]]$data$deltaPairs[1:s], rscale = rscale, nullInterval = c(-Inf,0), mu = 0) #a one-sample t-test on the paired difference against 0, equivalent to a paired sample t-test
-        #p_val <- t.test(x = sim[[i]]$data$deltaPairs[1:s],alternative = 'less')$p.value
+        p_val <- t.test(x = sim[[i]]$data$deltaPairs[1:s],alternative = 'less')$p.value
       }else if(alternative == 'positive'){
         BF_10 <- BayesFactor::ttestBF(x = sim[[i]]$data$deltaPairs[1:s], rscale = rscale, nullInterval = c(0,Inf), mu = 0)  #a one-sample t-test on the paired difference against 0, equivalent to a paired sample t-test
-        #p_val <- t.test(x = sim[[i]]$data$deltaPairs[1:s],alternative = 'greater')$p.value
+        p_val <- t.test(x = sim[[i]]$data$deltaPairs[1:s],alternative = 'greater')$p.value
       }
       
       mean_trial_saved[s-1] <- mean(sim[[i]]$data$deltaPairs[1:s])
@@ -53,13 +53,13 @@ simFun <- function(i,n_comparisons,sim,paired,alternative,rscale){
       #Calculate BF in favor of H1
       if (alternative == 'two.sided'){
         BF_10 <- BayesFactor::ttestBF(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s], rscale = rscale)
-        #p_val <- t.test(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s])$p.value
+        p_val <- t.test(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s])$p.value
       }else if(alternative == 'negative'){
         BF_10 <- BayesFactor::ttestBF(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s], rscale = rscale, nullInterval = c(-Inf,0))
-        #p_val <- t.test(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s],alternative = 'less')$p.value
+        p_val <- t.test(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s],alternative = 'less')$p.value
       }else if(alternative == 'positive'){
         BF_10 <- BayesFactor::ttestBF(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s], rscale = rscale, nullInterval = c(0,Inf))
-        #p_val <- t.test(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s],alternative = 'greater')$p.value
+        p_val <- t.test(x = sim[[i]]$data$group1[1:s],y = sim[[i]]$data$group2[1:s],alternative = 'greater')$p.value
       }
       
       mean_trial_saved[s-1] <- mean(sim[[i]]$data$group1[1:s]) - mean(sim[[i]]$data$group2[1:s])
@@ -76,7 +76,7 @@ simFun <- function(i,n_comparisons,sim,paired,alternative,rscale){
     n_comparisons_trial_saved[s-1] <- s
     BF_10_trial_saved[s-1] <- BF_10 
     BF_01_trial_saved[s-1] <- BF_01 
-    #p_val_trial_saved[s-1] <- p_val
+    p_val_trial_saved[s-1] <- p_val
     
     Trial_trial_saved[s-1] <- i
     
@@ -88,7 +88,7 @@ simFun <- function(i,n_comparisons,sim,paired,alternative,rscale){
               n_comparisons_trial_saved = unlist(n_comparisons_trial_saved),
               BF_10_trial_saved = unlist(BF_10_trial_saved), 
               BF_01_trial_saved = unlist(BF_01_trial_saved), 
-              #p_val_trial_saved = unlist(p_val_trial_saved), 
+              p_val_trial_saved = unlist(p_val_trial_saved), 
               Trial_trial_saved = unlist(Trial_trial_saved)) )
   
 }
@@ -111,7 +111,7 @@ BF_seq_sim_parallel <- function(n_trials = 100, n_comparisons = 100, mean_diff =
   n_comparisons_saved <- NULL
   BF_10_saved <- NULL
   BF_01_saved <- NULL
-  #pval_saved <- NULL
+  pval_saved <- NULL
   Trial_saved <- NULL
   mean_diff_at_n_saved <- NULL
   sd_at_n_saved <- NULL
@@ -169,7 +169,7 @@ BF_seq_sim_parallel <- function(n_trials = 100, n_comparisons = 100, mean_diff =
     n_comparisons_saved <- c(n_comparisons_saved, c(1,BF_sim_out[[i]]$n_comparisons_trial_saved)) #Add first comparison as first BF (at n_comparisons = 1) was set to 1 
     BF_10_saved <- c(BF_10_saved,c(1,BF_sim_out[[i]]$BF_10_trial_saved)) #save first comparison (n_comparisons = 1) as BF = 1 as this is not tested
     BF_01_saved <- c(BF_01_saved,c(1,BF_sim_out[[i]]$BF_01_trial_saved)) #save first comparison (n_comparisons = 1) as BF = 1 as this is not tested
-    #pval_saved <- c(pval_saved,c(NA,BF_sim_out[[i]]$p_val_trial_saved)) #save first comparison (n_comparisons = 1) as p = NA as this is not tested
+    pval_saved <- c(pval_saved,c(NA,BF_sim_out[[i]]$p_val_trial_saved)) #save first comparison (n_comparisons = 1) as p = NA as this is not tested
     Trial_saved <- c(Trial_saved,c(BF_sim_out[[i]]$Trial_trial_saved[1],BF_sim_out[[i]]$Trial_trial_saved)) #Add trial index to position 1 as first BF (at n_comparisons = 1) was set to 1 
     mean_diff_at_n_saved <- c(mean_diff_at_n_saved,c(NA,BF_sim_out[[i]]$mean_trial_saved))
     sd_at_n_saved <-  c(sd_at_n_saved,c(NA,BF_sim_out[[i]]$sd_trial_saved))
@@ -194,7 +194,7 @@ BF_seq_sim_parallel <- function(n_trials = 100, n_comparisons = 100, mean_diff =
                     n_comparisons = n_comparisons_saved, 
                     BF_10 = BF_10_saved, 
                     BF_01 = BF_01_saved, 
-                    #pval = pval_saved,
+                    pval = pval_saved,
                     mean_diff_at_n_saved = mean_diff_at_n_saved,
                     sd_at_n_saved = sd_at_n_saved) 
   
