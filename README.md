@@ -34,7 +34,7 @@ to their own folder. They must also make sure that the paths in the yaml header 
 
 The main source of inspiration for this tutorial is _"Schönbrodt FD, Wagenmakers E-J, Zehetleitner M, Perugini M (2017): Sequential hypothesis testing with Bayes factors: Efficiently testing mean differences. Psychol Methods. 22: 322."_ [Link to pdf](https://www.researchgate.net/publication/286971067_Sequential_Hypothesis_Testing_With_Bayes_Factors_Efficiently_Testing_Mean_Differences) 
 
-In our project we adapt the purpose to fit the field of PET: we introduce a paired design, focus on sample sizes commonly seen in PET, put greater focus on fixed "error control" using conventional thresholds when planning for studies, and relate the results to the conventional way of performing statistical inference in the field of PET today (i.e., classical fixed N NHST). 
+In our project we adapt the purpose to fit the field of PET: we introduce a paired design, focus on sample sizes commonly seen in PET, put greater focus on fixed "error control" using conventional thresholds when planning for studies, and relate the results to the conventional way of performing statistical inference in the field of PET today (i.e., classical fixed N (decided on apriori) approach). 
 
 As such, we hope this tutorial will fill two purposes: Introducing Bayesian hypothesis testing using BF to the field of PET, and encourage PET researcher to use adaptive study designs in order to reduce expense and radioactivity exposure.  
 
