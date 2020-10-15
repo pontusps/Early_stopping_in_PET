@@ -80,6 +80,8 @@ Bayesian hypothesis testing using BF aims to assess how compatible the observed 
 
 $BF = \frac{P(D|H_1)}{P(D|H_0)}$
 
+\newpage
+
 where D denotes the observed data[^fn3] [@Wrinch1921]. For example, a BF of 4 can be interpreted as “the observed data is 4 times more likely to have occurred under the alternative hypothesis compared to the null hypothesis”. As such, the BF directly quantifies the evidence in data in favour of one hypothesis against another. The reciprocal of BF, quantifies the support in data in favour of the null hypothesis, compared to the alternative. A BF of $\nicefrac{1}{5}$ would hence mean that there is 5 times more support in favor of H~0~, compared to H~1~. 
 
 #### Evidence thresholds
@@ -127,9 +129,8 @@ In the classical NHST framework, the alternative hypothesis is often specified a
 
 A commonly used non-informative distribution for describing H~1~ when testing mean differences is a two sided Cauchy distribution centered around zero[^fn5] (Figure \ref{fig_Cauchy}) [@Gonen2005]. This distribution ranges from minus infinity to plus infinity, and has fat tails relative to other continuous distributions. Using a Cauchy distribution means that the researcher specifies H~1~ to reflect the belief that the effect (such as a patient-control difference) is of small or medium size with relatively high confidence, but also allowing, with less confidence, an effect of a larger size. The fatness of the tails is determined by the width parameter *r* (analogous to the SD of a normal distribution), and is by convention often set to 0.707. Formally, the two competing hypotheses in such a BF test are: 
 
-\newpage
-
 $H_0: \delta = 0$
+
 $H_1: \delta \sim Cauchy(0,0.707)$
 
 where $\delta$ denotes the true population effect, and “$\sim$” means “distributed according to”. This particular null and alternative-hypothesis pair has become so common today when testing mean differences that it is called the “default” BF t-test [@Rouder2009; @Ly2016, @McMahon2016]. In this article, we will only evaluate sequential testing in PET studies using the default BF t-test.
@@ -224,7 +225,7 @@ Figure \ref{fig_k_at_5fpr}A and 3B show the estimated false positive rate when a
 \begin{figure}
         \centering
         \includegraphics[width=140mm]{/Users/pontus.sigray/Github/Early_stopping_in_PET/Results/Figures/Figure4.png}
-        \caption{\textit{Panels A and B show the proportion of studies that showed support for H\textsubscript{1} (aka “power curves”) for BF sequential testing (blue) and fixed N test (black), at different population effects (starting at D = $0$, i.e. no effect). For the fixed N approach, only one test is performed at N = $30$ subjects/group. For the sequential testing, $12$ subjects/group are first collected, then BF is checked after each added comparison pair until $30$ subjects/group is reached, using a stopping threshold of $4$. Panels C and D show the average number of subjects needed to reach a stopping decision at different population effects. The fixed N test is the black line (N = $30$ subjects/group); BF sequential testing is the blue line with shaded area denoting $\pm$ $1$SD.}}
+        \caption{\textit{Panels A and B show the proportion of studies that showed support for H\textsubscript{1} (aka “power curves”) for BF sequential testing (blue) and fixed N test (black), at different population effects (starting at D = $0$, i.e. no effect). For the fixed N approach, only one test is performed at N = $30$ subjects/group. For the sequential testing, $12$ subjects/group are first collected, then BF is checked after each added comparison pair until $30$ subjects/group is reached, stopping the study when BF > $4$. Panels C and D show the average number of subjects needed to reach a stopping decision at different population effects. The fixed N test is the black line (N = $30$ subjects/group); BF sequential testing is the blue line with shaded area denoting $\pm$ $1$SD.}}
         \label{fig_powerPhase1}
 \end{figure}
 
@@ -263,9 +264,9 @@ Figure \ref{fig_powerPhase2} summarises the results from the simulations. When t
 
 For the paired design we observe a similar false positive rate but a higher rate of true negative evidence (~75%) when the population effect is zero. The rate of true positives is also higher at all evaluated effect sizes compared to the cross-sectional design (Figure \ref{fig_powerPhase2}). For example, at a population effect of Dz=0.5, a stop decision is reached before or at Nmax in 75% of studies. In this case, studies can on average be stopped after scanning 19 subjects/group, saving in total 22 examinations, i.e., 36% expense and injected radioactivity. 
 
-The area around the point where the red and black line cross[^fn7], is a weak spot for the BF sequential testing procedure. At this range of true effects in the population, the risk of obtaining an inconclusive result is at its highest (i.e., the blue line is at its nadir). In the cases in which a decision is reached, the study will stop with equal probability for H~1~ and H~0~, and the risk for false negative evidence is around 25%. 
+The area around the point where the red and black line cross, is a weak spot for the BF sequential testing procedure. At this range of true effects in the population, the risk of obtaining an inconclusive result is at its highest (i.e., the blue line is at its nadir). In the cases in which a decision is reached, the study will stop with equal probability for H~1~ and H~0~, and the risk for false negative evidence is around 25%. 
 
-Assuming that the PET researcher would be interested in stopping a study early when H~0~ is supported, a range of population effects with high risk of false negative evidence will always exist. It is therefore sensible to beforehand decide on a minimal population effect of interest, and choose the settings to ensure that any larger effect does not have too high a risk of generating evidence for H~0~. For example, with the settings presented in Figure \ref{fig_powerPhase2} (Nstart = 12, Nmax = 30, threshold = 4) it could be said that all effects between D = 0 and 0.45 ought to be of little clinical interest, in order for sequential BF testing to be applicable in this case since the risk of false negative evidence for these effects is > 10%[^fn8].  
+Assuming that the PET researcher would be interested in stopping a study early when H~0~ is supported, a range of population effects with high risk of false negative evidence will always exist. It is therefore sensible to beforehand decide on a minimal population effect of interest, and choose the settings to ensure that any larger effect does not have too high a risk of generating evidence for H~0~. For example, with the settings presented in Figure \ref{fig_powerPhase2} (Nstart = 12, Nmax = 30, threshold = 4) it could be said that all effects between D = 0 and 0.45 ought to be of little clinical interest, in order for sequential BF testing to be applicable in this case since the risk of false negative evidence for these effects is > 10%[^fn7].  
 
 The same results but for different Nmax (15, 20, 50 and 100 subjects/group) are presented in supplementary information (Supplementary Figures S7-S10). 
 
@@ -279,13 +280,13 @@ The same results but for different Nmax (15, 20, 50 and 100 subjects/group) are 
 The third and final aim of this tutorial is to apply sequential BF testing to a real clinical PET setting. To this purpose, we used already collected data of patients with major depressive disorder and healthy control subjects examined with [$^{11}$C]WAY100635, a radioligand, which binds to the serotonin 1A (5HT1A) receptor [@Parsey2010; @Chen2019]. From this data, we included 40 medication-free patients (mean Age 36.2 (12.9SD); 25 females) and 40 healthy controls (mean Age 37.1 (14.0SD), 25 females), using BP~F~ (specific binding over the free-fraction in plasma) as the primary outcome measure for assessing 5HT1A receptor availability in the brain. The 5HT1A receptor acts inhibitory on serotonergic neurons in the raphe nuclei. A high concentration of receptors in raphe will likely lead to lower transmitter release in serotonergic projection areas. Hence, we hypothesized that patients suffering from MDD show higher 5HT1A receptor availability in the raphe nuclei compared to healthy controls. Here we apply sequential BF testing to examine whether this hypothesis gains enough support to stop data collection before 40 subjects per group are reached. 
 
 ###Methods
-We applied sequential BF testing to assess the support in data in favor of patients having higher BP~F~ in the raphe nuclei than controls (H~1~), as compared to no difference (H~0~). We also examined the evidence in data in favor of H~0~ over H~1~, to stop the study early if the null hypothesis was supported. The stopping threshold was set to BF>5 for H~1~ (BF < $\nicefrac{1}{5}$ for H~0~), in order to keep the rate of false positive evidence below 5%[^fn9] (see Supplementary Figure S1). We used a one-sided Cauchy distribution, centered around 0 with an *r* = 0.707 to describe the predicted mean difference under H~1~. H~0~ was specified as the point zero value. 
+We applied sequential BF testing to assess the support in data in favor of patients having higher BP~F~ in the raphe nuclei than controls (H~1~), as compared to no difference (H~0~). We also examined the evidence in data in favor of H~0~ over H~1~, to stop the study early if the null hypothesis was supported. The stopping threshold was set to BF>5 for H~1~ (BF < $\nicefrac{1}{5}$ for H~0~), in order to keep the rate of false positive evidence below 5%[^fn8] (see Supplementary Figure S1). We used a one-sided Cauchy distribution, centered around 0 with an *r* = 0.707 to describe the predicted mean difference under H~1~. H~0~ was specified as the point zero value. 
 
 First, patient and control data were sorted according to the chronological order in which the subjects were examined. We then retrieved the first 12 patients and 12 control subjects, standardized all raphe nuclei BP~F~ values, calculated the BF and compared it against the stopping thresholds. Following this, we added one additional patient and one healthy control to the previous subjects, checked BF against the thresholds, and so on, until we either were able to stop early, or reached the maximum of 40 subjects/group. 
 
 ```{r, echo=F, warning=F}
 
-MDD.tidy <- read.csv('/Users/pontus.sigray/Github/Early_stopping_in_PET/RawData/MDD_WAY_data/MDD_way_tidy_NHST_results.csv')
+MDD.tidy <- read.csv('/Users/pontus.sigray/Github/Early_stopping_in_PET/RawData/MDD_WAY_data/MDD_way_tidy_fixedN_results.csv')
 
 options(scipen=999)
 MDD.pval <- abs(round(MDD.tidy$p.value,6)) 
@@ -294,13 +295,13 @@ MDD.df <- abs(round(MDD.tidy$parameter,2))
 
 MDD.d <- abs(round(MDD.tidy$cohensD,2))
 MDD.perc <- abs(round(MDD.tidy$percDiff,2))*100
-
+MDD.BF <- abs(round(MDD.tidy$BF))
 
 ```
 
 
 ###Results
-When applying a NHST one-sided two-sample t-test to the full dataset, we observed a large group difference in raphe nuclei BP~F~ (t = `r MDD.tval`, df = `r MDD.df`, p = `r MDD.pval`), with patients showing higher values compared to healthy controls (D = `r MDD.d` or a `r MDD.perc`% increase).
+When applying a one-sided two-sample t-test to the full dataset, we observed a large group difference in raphe nuclei BP~F~ (t = `r MDD.tval`, df = `r MDD.df`, p = `r MDD.pval`, BF = `r MDD.BF` ), with patients showing higher values compared to healthy controls (D = `r MDD.d` or a `r MDD.perc`% increase).
 
 When applying sequential testing, the BF passes the threshold of 5 in support of H~1~, after the inclusion of 27 subjects/group (Figure \ref{fig_seqWAY}). Hence, had sequential testing been applied in collection of [$^{11}$C]WAY100635 patient-control data, it would have been possible to stop the recruitment at a total N of 54 instead of 80, saving 33% in terms of expense and radioactivity exposure. Assuming that a PET examination costs 5000 USD/Euro, that would amount to saving 130,000 USD/Euro in total.  
 
@@ -312,9 +313,11 @@ When applying sequential testing, the BF passes the threshold of 5 in support of
 \end{figure}
 
 #Discussion
-In this tutorial we show that it is possible to stop recruitment of subjects in PET studies as soon as enough data have been collected to make a conclusion, saving both expense and exposure to radioactivity. We do this by employing sequential BF testing, which assesses the support in data in favor of two competing hypotheses while the study is still ongoing.  
+In this tutorial we show that it is possible to stop recruitment of subjects in PET studies as soon as enough data have been collected to make a conclusion, reducing both expense and exposure to radioactivity. We do this by employing sequential BF testing, which assesses the support in data in favor of two competing hypotheses while the study is still ongoing.  
 
 When applying sequential BF testing, and the true population effect is small, the relative savings are modest compared to using the conventional design where only one test is performed at a fixed sample size. As the population effect becomes bigger however, it is possible to (on average) stop the data collection early, potentially saving more than half of the resources that would be needed for a PET study carried out with the conventional approach. For a range of effects, a fixed N test will however show around 5-10% higher true positive rate compared to sequential BF testing (Figure \ref{fig_powerPhase1}A-B). By using a lower BF decision threshold, the proportion of true positive stopping decisions will increase when there is an effect, but it comes with a cost of more false positives when H~0~ is true.   
+
+\newpage
 
 #### Alternative sequential procedures
 There are sequential testing methods other than BF that can be used to stop the data collection early, and that offer exact control over error rates. For the NHST framework, a viable alternative is to apply a so-called group-sequential NHST design [@Schulz2005]. In fact, when calibrating the BF threshold (using a "default" Cauchy-distribution for describing H~1~) to a 5% false positive rate when stopping only for H~1~ (see  Objective 1), the sequential BF procedure will be identical to performing corrected sequential NHST t-tests (Supplementary Figure S2). For NHST, there are several different efficient strategies for doing sequential testing to stop a study as soon as H~0~ can be rejected [@Proschan2006; @Lakens2014]. One alternative is to use "alpha-spending functions", where the significance threshold changes for each sequential test, making it harder to reject H~0~ at an early stage of the study, but easier later on (or vice versa), while still keeping the total false positive rate below 5% [@Demets1994; @Selwyn2004]. There are also methods for performing so called "futility testing", with which the researchers can stop a study early if it is deemed to  unlikely that a significant finding will be achieved later on [@Lachin2005]. Addressing such sequential-NHST procedures for application in clinical PET research are however outside the scope of this tutorial. 
@@ -352,6 +355,8 @@ Throughout this article we have used a Cauchy distribution with an *r* of 0.707 
 
 Increasing the width of the Cauchy can be desirable in e.g., a paired study design, where the variance can be expected to be low, but the difference in raw scores is assumed to be similar to that from a cross-sectional design. The reason for this is that the same change in raw score will correspond to a much larger standardized effect size (see Table 2), and it is therefore sensible to specify an H~1~ which predicts a more extreme difference.  The lower rate of false positives that results from using a higher *r* (e.g., 1 instead of 0.707) can be utilized by starting the sequential BF testing earlier than at 12 subjects/group. As a result, the average sample size needed to reach a decision can be further decreased (see Supplementary Figure S11). 
 
+\vspace{10pt}
+
 \begin{tcolorbox}[title=\textbf{Practical recommendations 3},title filled]
 {If the researcher has an informed idea on how the studied effect will look, they should consider using specification of H\textsubscript{1} other than the "default" zero-centered Cauchy employed in this tutorial. This could e.g., be a normal distribution centered around a value considered to be either a plausible group difference or is clinically meaningful. This recommendation also applies to the null-hypothesis; we encourage the researcher to consider redefining H\textsubscript{0} in order to test (what might be) a more appropriate hypothesis. An example of this could be to assess if an increase in patient BP\textsubscript{ND} gains more support in data compared to a decrease, rather than just testing "there is a difference" vs. "there is no difference".}
 \end{tcolorbox}
@@ -366,7 +371,7 @@ If PET researchers wish to use settings not discussed in depth in this tutorial:
 
 Before applying the sequential BF testing method, the researchers should decide what they want to prioritize: keeping the risk of making the wrong stopping decision low but accepting more inconclusives, or stopping as early as possible but with a higher risk of errors. To help decide on this trade-off when planning PET studies, we have developed R functions with which PET researchers can examine how different settings for the sequential testing approach affects the average sample size needed, as well as rates of true and false evidence (https://github.com/pontusps/Early_stopping_in_PET).
 
-It should by now be clear to the reader that a set of critical decisions needs to be made before applying sequential BF testing in a clinical PET study. For this reason, we recommend all researchers to pre-register their analysis before data collection starts [^fn10] [@VantVeer2016; @Poldrack2017; @Knudsen2020]. A pre-registration can be thought of as a safety net for the researcher. It helps guide the analysis and interpretation of data so that error rates are kept under control. It can also be shown to reviewers or readers to increase the credibility of the methods and findings. Deviations from a pre-registration is of course possible, and often warranted, but should be reported transparently in the article.  
+It should by now be clear to the reader that a set of critical decisions needs to be made before applying sequential BF testing in a clinical PET study. For this reason, we recommend all researchers to pre-register their analysis before data collection starts [^fn9] [@VantVeer2016; @Poldrack2017; @Knudsen2020]. A pre-registration can be thought of as a safety net for the researcher. It helps guide the analysis and interpretation of data so that error rates are kept under control. It can also be shown to reviewers or readers to increase the credibility of the methods and findings. Deviations from a pre-registration is of course possible, and often warranted, but should be reported transparently in the article.  
 
 If a PET researcher wants to perform a study using sequential BF testning, we recommend that they follow the steps outlined in a flow-chart found in supplementary information (supplementary Figure S12). In order to perform the default BF t-test, the freely available *BayesFactor* package [@Morey2018] in R or point-and-click software JASP [@Quintana2018; @Love2019; @VanDoorn2019] can be used. 
 
@@ -394,20 +399,11 @@ If the reader is interested in learning more about sequential testing the follow
 
 [^fn6]: Although a fixed N NHST is by far the most commonly used statistical paradigm in PET-research, the principles we demonstrate here will be true when comparing sequential testing to a fixed N BF t-test as well.  
 
-[^fn7]:Egon: Don’t cross the streams. \newline 
-Peter: Why? \newline 
-Egon: It would be bad. \newline 
-Peter: I’m fuzzy on the whole good/bad thing. What do you mean “bad”? \newline 
-Egon: Try to imagine all life as you know it stopping instantaneously and every molecule in your body exploding at the speed of light. \newline 
-Raymond: Total protonic reversal. \newline 
-Peter: That’s bad. Okay. Alright, important safety tip, thanks Egon. \newline 
-*- Ghost Busters, 1984* \newline \phantom{x}
+[^fn7]: We believe that it is reasonable to consider a false negative to be somewhat less severe than a false positive,  and for this reason we choose to present a 10% threshold here. However, just as with the conventional 5% threshold for false positive findings [@Lakens2018], this is not a sacrosanct value. We encourage the reader to think for themselves what proportion of false evidence they are ready to accept when planning their own clinical PET studies.  \newline \phantom{x}  
 
-[^fn8]: We believe that it is reasonable to consider a false negative to be somewhat less severe than a false positive,  and for this reason we choose to present a 10% threshold here. However, just as with the conventional 5% threshold for false positive findings [@Lakens2018], this is not a sacrosanct value. We encourage the reader to think for themselves what proportion of false evidence they are ready to accept when planning their own clinical PET studies.  \newline \phantom{x}  
+[^fn8]:A H~0~ stopping threshold of BF <$\nicefrac{1}{5}$ means that if there is a true population difference between patients and controls in the range of D = 0 to 0.35, the risk of a false negative finding will be >10%. Hence, if the researchers consider such effects to be of high clinical interest to detect, they might consider using other settings instead. See the discussion for possible solutions. \newline \phantom{x}  
 
-[^fn9]:A H~0~ stopping threshold of BF <$\nicefrac{1}{5}$ means that if there is a true population difference between patients and controls in the range of D = 0 to 0.35, the risk of a false negative finding will be >10%. Hence, if the researchers consider such effects to be of high clinical interest to detect, they might consider using other settings instead. See the discussion for possible solutions. \newline \phantom{x}  
-
-[^fn10]: See e.g., https://aspredicted.org/ for easy and efficient pre-registration. \newline \phantom{x}  
+[^fn9]: See e.g., https://aspredicted.org/ for easy and efficient pre-registration. \newline \phantom{x}  
 
 ---
 # End of footnote section #
