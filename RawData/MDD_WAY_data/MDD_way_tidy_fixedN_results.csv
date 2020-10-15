@@ -1,0 +1,2 @@
+"estimate","estimate1","estimate2","statistic","p.value","parameter","conf.low","conf.high","method","alternative","cohensD","BF","percDiff"
+-15.920191365225,31.18119773225,47.101389097475,-4.05537113091381,5.96828953365473e-05,76.5756306142204,-Inf,-9.38390443030246,"Welch Two Sample t-test","less",-0.906808552271348,385.262535846016,0.510570232161387
