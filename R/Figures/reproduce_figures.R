@@ -757,32 +757,20 @@ BF_NHST_power_N_CS <- plot_Power_seqNHST(path = './DerivedData/PlotData/power_st
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 30,
                                  D_vector = D_vector,
-                                 print_FPR = T, 
+                                 print_FPR = F, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.35),
                                  legpos2 = c(0.69, 0.15))
 
-#paired
-BF_NHST_power_N_paired <- plot_Power_seqNHST(path = './DerivedData/PlotData/power_stopH1/Supplementary/Paired_two_sided_stopH1_seqNHST.csv', 
-                                     paired = T,
-                                     start_n_comparisons = 12,
-                                     max_n_comparisons = 30,
-                                     D_vector = D_vector,
-                                     print_FPR = T, 
-                                     title = 'Paired',
-                                     ylab='Positive findings (%)', 
-                                     legpos1 = c(0.69, 0.35),
-                                     legpos2 = c(0.69, 0.15))
-
-BF_NHST_power <- plot_grid(BF_NHST_power_N_CS$power_panel, BF_NHST_power_N_paired$power_panel,
-                           BF_NHST_power_N_CS$N_panel,BF_NHST_power_N_paired$N_panel,
-                           labels = c('A', 'B', 'C','D'), 
-                           label_size = 25,ncol = 2)
+BF_NHST_power <- plot_grid(BF_NHST_power_N_CS$power_panel,
+                           BF_NHST_power_N_CS$N_panel,
+                           labels = c('A', 'B'), 
+                           label_size = 25,ncol = 1)
 
 cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S2.png",
                    plot = BF_NHST_power,
-                   base_width = 40,
+                   base_width = 40/2,
                    base_height = 40,
                    units = 'cm')
 
@@ -793,6 +781,9 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S2
 
 ### Get plot data
 # cross-sectional two-sided, Nstart = 12, Nmax = 15
+
+k.CS <- sub_func_fetch_k(path.data = './DerivedData/PlotData/k_cntrl_fpr/CS_stopH1_two_sided.csv',N_max_compairsons = 15)
+
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
                                     paired = F,
@@ -800,7 +791,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Cross
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 15,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = k.CS,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -809,7 +800,10 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Cross
 write.csv(x = pwr.df,file = './DerivedData/PlotData/power_stopH1/Supplementary/CS_two_sided_stopH1_Nmax15.csv',row.names = F)
 rm(list = c("pwr.df")) #clean enviroment of pwr.df
 
-# paired two-sided, Nstart = 8, Nmax = 15
+# paired two-sided, Nstart = 12, Nmax = 15
+
+k.paired <- sub_func_fetch_k(path.data = './DerivedData/PlotData/k_cntrl_fpr/Paired_stopH1_two_sided.csv',N_max_compairsons = 15)
+
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paired/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
                                     paired = T,
@@ -817,7 +811,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paire
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 15,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = k.paired,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -834,7 +828,7 @@ BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Sup
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 15,
                                  D_vector = D_vector,
-                                 print_FPR = 40, 
+                                 print_FPR = NULL, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.15),
@@ -846,7 +840,7 @@ BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1
                                      start_n_comparisons = 12,
                                      max_n_comparisons = 15,
                                      D_vector = D_vector,
-                                     print_FPR = 40, 
+                                     print_FPR = NULL, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
                                      legpos1 = c(0.69, 0.15),
@@ -871,6 +865,10 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S3
 ### Get plot data
 
 # cross-sectional two-sided, Nstart = 12, Nmax = 20
+
+k.CS <- sub_func_fetch_k(path.data = './DerivedData/PlotData/k_cntrl_fpr/CS_stopH1_two_sided.csv',N_max_compairsons = 20)
+
+
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
                                     paired = F,
@@ -878,7 +876,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Cross
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 20,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = k.CS,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -888,6 +886,9 @@ write.csv(x = pwr.df,file = './DerivedData/PlotData/power_stopH1/Supplementary/C
 rm(list = c("pwr.df")) #clean enviroment of pwr.df
 
 # paired two-sided, Nstart = 12, Nmax = 20
+
+k.paired <- sub_func_fetch_k(path.data = './DerivedData/PlotData/k_cntrl_fpr/Paired_stopH1_two_sided.csv',N_max_compairsons = 20)
+
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paired/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
                                     paired = T,
@@ -895,7 +896,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paire
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 20,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = k.paired,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -913,7 +914,7 @@ BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Sup
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 20,
                                  D_vector = D_vector,
-                                 print_FPR = -1, 
+                                 print_FPR = NULL, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.15),
@@ -925,7 +926,7 @@ BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1
                                      start_n_comparisons = 12,
                                      max_n_comparisons = 20,
                                      D_vector = D_vector,
-                                     print_FPR = -1, 
+                                     print_FPR = NULL, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
                                      legpos1 = c(0.69, 0.15),
@@ -950,6 +951,9 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S4
 ### Get plot data
 
 # cross-sectional two-sided, Nstart = 12, Nmax = 50
+
+k.CS <- sub_func_fetch_k(path.data = './DerivedData/PlotData/k_cntrl_fpr/CS_stopH1_two_sided.csv',N_max_compairsons = 50)
+
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
                                     paired = F,
@@ -957,7 +961,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Cross
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 50,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = k.CS,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -967,6 +971,9 @@ write.csv(x = pwr.df,file = './DerivedData/PlotData/power_stopH1/Supplementary/C
 rm(list = c("pwr.df")) #clean enviroment of pwr.df
 
 # paired two-sided, Nstart = 12, Nmax = 50
+
+k.paired <- sub_func_fetch_k(path.data = './DerivedData/PlotData/k_cntrl_fpr/Paired_stopH1_two_sided.csv',N_max_compairsons = 50)
+
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paired/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
                                     paired = T,
@@ -974,7 +981,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paire
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 50,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = k.paired,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -991,7 +998,7 @@ BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Sup
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 50,
                                  D_vector = D_vector,
-                                 print_FPR = 0, 
+                                 print_FPR = NULL, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.4),
@@ -1003,7 +1010,7 @@ BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1
                                      start_n_comparisons = 12,
                                      max_n_comparisons = 50,
                                      D_vector = D_vector,
-                                     print_FPR = 0, 
+                                     print_FPR = NULL, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
                                      legpos1 = c(0.69, 0.4),
@@ -1028,6 +1035,21 @@ cowplot::save_plot(filename = "./Results/Figures/Supplementary_figures/Figure_S5
 ### Get plot data
 
 # cross-sectional two-sided, Nstart = 12, Nmax = 100
+
+### First calculate k for keeping fpr<5% for Nmax = 100
+
+# cross-sectional two-sided, Nstart = 12, Nmax = 100
+k_fpr_5perc.df <- getPlotData_k_cntrl_fpr(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/Enlarged_BFsim_D_0/BFsims.rds',
+                                          start_n_comparisons = 12, 
+                                          max_n_comparisons = 100, 
+                                          start_BF10 = 1.5, 
+                                          start_BF01 = Inf,  #stop only for H1
+                                          fpr_limit = 0.05, 
+                                          step_size = 0.05, 
+                                          decimals = 2)
+
+k.CS <- k_fpr_5perc.df$k[k_fpr_5perc.df$maxN == 100]
+
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/CrossSectional/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
                                     paired = F,
@@ -1035,7 +1057,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Cross
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 100,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = k.CS,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -1045,6 +1067,18 @@ write.csv(x = pwr.df,file = './DerivedData/PlotData/power_stopH1/Supplementary/C
 rm(list = c("pwr.df")) #clean enviroment of pwr.df
 
 # paired two-sided, Nstart = 12, Nmax = 100
+
+k_fpr_5perc.df <- getPlotData_k_cntrl_fpr(path.slim = './DerivedData/SlimmedData/Paired/TwoSided/Enlarged_BFsim_D_0/BFsims.rds',
+                                          start_n_comparisons = 12, 
+                                          max_n_comparisons = 100, 
+                                          start_BF10 = 1.5, 
+                                          start_BF01 = Inf,  #stop only for H1
+                                          fpr_limit = 0.05, 
+                                          step_size = 0.05, 
+                                          decimals = 2)
+
+k.paired <- k_fpr_5perc.df$k[k_fpr_5perc.df$maxN == 100]
+
 pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paired/TwoSided/BFsims.rds',
                                     alternative = 'two.sided',
                                     paired = T,
@@ -1052,7 +1086,7 @@ pwr.df <-  getPlotData_power_curves(path.slim = './DerivedData/SlimmedData/Paire
                                     start_n_comparisons = 12,
                                     max_n_comparisons = 100,
                                     test_seq = 1,
-                                    k_BF10 = 4,
+                                    k_BF10 = k.paired,
                                     k_BF01 = Inf,
                                     decimals = 1,
                                     NHST_curve = T,
@@ -1069,7 +1103,7 @@ BF_NHST_power_N_CS <- plot_Power(path = './DerivedData/PlotData/power_stopH1/Sup
                                  start_n_comparisons = 12,
                                  max_n_comparisons = 100,
                                  D_vector = D_vector,
-                                 print_FPR = 0, 
+                                 print_FPR = NULL, 
                                  title = 'Cross-sectional',
                                  ylab='Positive findings (%)', 
                                  legpos1 = c(0.69, 0.4),
@@ -1081,7 +1115,7 @@ BF_NHST_power_N_paired <- plot_Power(path = './DerivedData/PlotData/power_stopH1
                                      start_n_comparisons = 12,
                                      max_n_comparisons = 100,
                                      D_vector = D_vector,
-                                     print_FPR = 0, 
+                                     print_FPR = NULL, 
                                      title = 'Paired',
                                      ylab='Positive findings (%)', 
                                      legpos1 = c(0.69, 0.4),
