@@ -87,7 +87,7 @@ getplotData_fpr_at_k <- function(path.slim, start_n_comparisons, max_n_compariso
   ##Add NHST to the plot-data
   
   NHST <- data.frame(rep(0.05,max_n_comparisons-(start_n_comparisons-1)))
-  NHST$k <- "fixed N NHST"
+  NHST$k <- "fixed N approach"
   NHST$maxN <- start_n_comparisons:max_n_comparisons
   names(NHST)[1] <- "FPR"
   
