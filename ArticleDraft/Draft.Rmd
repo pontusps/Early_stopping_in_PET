@@ -273,7 +273,7 @@ The same results but for different Nmax (15, 20, 50 and 100 subjects/group) are 
 \vspace{10pt}
 
 \begin{tcolorbox}[title=\textbf{Practical recommendations 2},title filled]
-{In this simulation set-up we show that it is possible to stop a PET study early either when there is a true underlying effect in the population, or when the effect is zero. When using the Cauchy distribution to describe the alternative hypothesis, we recommend that sequential BF testing does not start until at least 12 subjects per group have been collected, setting the BF threshold to a minimum of 3, and using a one-sided test. Using a one-sided test means that the researcher must make an *a priori* prediction of which direction the effect will have, and not change this prediction after the study is started, similar to performing a classical one-sided NHST t-test.}
+{In this simulation set-up we show that it is possible to stop a PET study early either when there is a true underlying effect in the population, or when the effect is zero. When using the Cauchy distribution to describe the alternative hypothesis, we recommend that sequential BF testing does not start until at least 12 subjects per group have been collected, setting the BF threshold to a minimum of 3, and using a one-sided test. Using a one-sided test means that the researcher must make an \textit{a priori} prediction of which direction the effect will have, and not change this prediction after the study is started, similar to performing a classical one-sided NHST t-test.}
 \end{tcolorbox}
 
 ## Objective 3 - Application to real clinical PET data 
